@@ -86,5 +86,17 @@
 
             header("Location: http://contactosmvc.local/");
         }
+
+        public function searchAction($request) {
+            $data["perfil"] = $_SESSION["perfil"];
+
+            $contacto = Contactos::getInstancia();
+            $data["contacto"] = $contacto->getAllFromQuery($_GET["q"]);
+            $this->renderHTML("../Views/index_view.php", $data);
+
+        }
+
+
+        
     }
 ?>

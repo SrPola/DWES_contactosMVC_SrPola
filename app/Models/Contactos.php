@@ -98,6 +98,16 @@
             return $this->rows ?? null;
         }
 
+        public function getAllFromQuery($query) {
+            $this->query = "SELECT * FROM contactos WHERE nombre LIKE :query OR telefono LIKE :query OR email LIKE :query";
+            $this->params['query'] = "%".$query."%";
+            
+            $this->get_results_from_query();
+
+            // var_dump($this->rows);
+            return $this->rows ?? null;
+        }
+
         public function get($id='') {
             if ($id != '') {
                 $this->query = "SELECT * FROM contactos WHERE id = :id";

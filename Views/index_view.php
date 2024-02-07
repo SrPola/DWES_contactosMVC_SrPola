@@ -16,15 +16,18 @@
         <?php
             if ($data["perfil"] == "invitado") {
                 include_once "include/login_view.php";
+
             } else {
                 echo "<p>Bienvenido ".$_SESSION["usuario"]["usuario"]."</p>";
                 echo "<a href='http://contactosmvc.local/logout'>Cerrar sesión</a>";
             }
+
+            include_once "include/search_view.php";
         ?>
 
         <br>
         <div>Información de cuenta</div>
-        <p><?php
+        <p><?php            
             if ($data["perfil"] == "usuario") {
                 echo "<a href='http://contactosmvc.local/add'>Nuevo</a><br>";
             }
